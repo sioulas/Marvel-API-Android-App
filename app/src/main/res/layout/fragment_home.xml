@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/home">
+
+    <!-- Transparent black background for the bottom portion -->
+    <LinearLayout android:id="@+id/bottom_layout"
+        android:layout_width="0dp" android:layout_height="0dp" android:background="#80000000"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHeight_percent="0.35">
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to the Ultimate Marvel Quiz App"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:background="@android:color/transparent"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/connect_api_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connect to the API"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

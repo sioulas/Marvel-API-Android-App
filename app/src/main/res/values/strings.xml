@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">UXMApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_heroes">Heroes</string>
+    <string name="title_query">Query</string>
+    <string name="title_quiz">Quiz</string>
+    <string name="search">Search for a hero</string>
+    <string name="hero_image">Hero Image\n</string>
+    <string name="enter_hero_name">Enter hero name</string>
+    <string name="marvel">Data provided by Marvel. © 2024 Marvel</string>
+</resources>

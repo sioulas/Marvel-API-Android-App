@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.UXMApp2" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/maroon</item>
+        <item name="colorPrimaryVariant">@color/transparent</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/red</item>
+        <item name="colorSecondaryVariant">@color/red</item>
+        <item name="colorOnSecondary">@color/maroon</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="actionBarStyle">@style/Widget.AppCompat.ActionBar.Solid.UXMApp2</item>
+        <item name="buttonStyle">@style/MyButtonStyle</item>
+    </style>
+    <style name="Widget.AppCompat.ActionBar.Solid.UXMApp2" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/red</item>
+        <item name="titleTextStyle">@style/ActionBarTitleText</item>
+    </style>
+    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/maroon</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="ActionBarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white2</item>
+    </style>
+</resources>

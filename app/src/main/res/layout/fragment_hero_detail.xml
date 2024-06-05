@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.heroes.HeroDetailFragment">
+
+    <ImageView
+        android:id="@+id/heroImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/hero_image" />
+
+    <TextView
+        android:id="@+id/heroName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/heroImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:padding="16dp"
+        android:textStyle="bold"
+        tools:text="Hero Name" />
+
+    <TextView
+        android:id="@+id/heroDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/heroName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:padding="16dp"
+        tools:text="Hero Description" />
+
+    <TextView
+        android:id="@+id/heroComics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/heroDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:padding="16dp"
+        tools:text="Comics: 0" />
+
+    <TextView
+        android:id="@+id/heroStories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/heroComics"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:padding="16dp"
+        tools:text="Stories: 0" />
+
+    <TextView
+        android:id="@+id/heroEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/heroStories"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:padding="16dp"
+        tools:text="Events: 0" />
+
+    <TextView
+        android:id="@+id/heroSeries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/heroEvents"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:padding="16dp"
+        tools:text="Series: 0" />
+
+    <Button
+        android:id="@+id/goBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Go Back"
+        app:layout_constraintTop_toBottomOf="@id/heroSeries"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
