@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.uxmapp2.R
@@ -21,14 +20,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
-import android.app.AlertDialog
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel: SettingsViewModel by activityViewModels()
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -38,6 +34,10 @@ class SettingsFragment : Fragment() {
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
+        // Load existing keys if available
+        binding.publicKeyEditText.setText(sharedPreferences.getString("PUBLIC_KEY", ""))
+        binding.privateKeyEditText.setText(sharedPreferences.getString("PRIVATE_KEY", ""))
 
         binding.saveButton.setOnClickListener {
             val publicKey = binding.publicKeyEditText.text.toString()
@@ -56,19 +56,15 @@ class SettingsFragment : Fragment() {
             showExitConfirmationDialog()
         }
 
-        return binding.root
-    }
-
-    private fun showExitConfirmationDialog() {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Exit")
-            .setMessage("Are you sure you want to exit the app, Hero?")
-            .setPositiveButton("Yes") { dialog, which ->
-                activity?.finish()
-                System.exit(0)
+        binding.showPrivateKeyCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.privateKeyEditText.inputType = android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                binding.privateKeyEditText.inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
-            .setNegativeButton("No", null)
-            .show()
+        }
+
+        return binding.root
     }
 
     private fun verifyApiCredentials(publicKey: String, privateKey: String) {
@@ -77,8 +73,7 @@ class SettingsFragment : Fragment() {
             when (state) {
                 is State.Success -> {
                     Toast.makeText(requireContext(), "API Credentials Saved", Toast.LENGTH_SHORT).show()
-                    viewModel.allowSettingsNavigation()
-                    findNavController().navigateUp()
+                    findNavController().navigate(R.id.navigation_heroes)
                 }
                 is State.Error -> {
                     Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
@@ -104,16 +99,23 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun showExitConfirmationDialog() {
+        android.app.AlertDialog.Builder(requireContext())
+            .setMessage("Are you sure you want to exit the app, Hero?")
+            .setPositiveButton("Yes") { _, _ ->
+                requireActivity().finish()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-    override fun onPause() {
-        super.onPause()
-        viewModel.resetSettingsNavigation()
-    }
 }
+
+
 
 
 

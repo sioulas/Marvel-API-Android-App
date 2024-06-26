@@ -47,7 +47,7 @@ class QueryFragment : Fragment() {
             if (query.isNotEmpty()) {
                 viewModel.searchHeroes(query)
             } else {
-                Toast.makeText(requireContext(), "Please enter a hero name", Toast.LENGTH_SHORT).show()
+                viewModel.fetchAllHeroes()
             }
         }
 
@@ -85,6 +85,9 @@ class QueryFragment : Fragment() {
         _binding = null
     }
 }
+
+
+
 
 
 

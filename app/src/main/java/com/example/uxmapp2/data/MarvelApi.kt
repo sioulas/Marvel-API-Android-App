@@ -11,7 +11,8 @@ interface MarvelApi {
         @Query("apikey") apikey: String = Constants.PUBLIC_KEY,
         @Query("ts") ts: String = Constants.timeStamp,
         @Query("hash") hash: String = Constants.hash(),
-        @Query("nameStartsWith") search: String
+        @Query("nameStartsWith") search: String? = null
     ): Hero
 }
+
 

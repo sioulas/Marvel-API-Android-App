@@ -19,6 +19,22 @@ class QueryViewModel @Inject constructor(
     private val _searchResults = MutableLiveData<State<List<Result>>>()
     val searchResults: LiveData<State<List<Result>>> = _searchResults
 
+    init {
+        fetchAllHeroes()
+    }
+
+    fun fetchAllHeroes() {
+        _searchResults.value = State.Loading
+        viewModelScope.launch {
+            try {
+                val response = repository.getAllCharacters("")
+                _searchResults.value = State.Success(response.data.results)
+            } catch (e: Exception) {
+                _searchResults.value = State.Error(e.message ?: "An unknown error occurred")
+            }
+        }
+    }
+
     fun searchHeroes(nameStartsWith: String) {
         _searchResults.value = State.Loading
         viewModelScope.launch {
@@ -31,6 +47,9 @@ class QueryViewModel @Inject constructor(
         }
     }
 }
+
+
+
 
 
 
